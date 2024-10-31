@@ -71,6 +71,10 @@ class User
     #[ORM\OneToMany(targetEntity: Vacation::class, mappedBy: 'username', orphanRemoval: true)]
     private Collection $vacations;
 
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Role $role = null;
+
     public function __construct()
     {
         $this->timeRecords = new ArrayCollection();
@@ -297,6 +301,18 @@ class User
                 $vacation->setUsername(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRole(): ?Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(?Role $role): static
+    {
+        $this->role = $role;
 
         return $this;
     }
