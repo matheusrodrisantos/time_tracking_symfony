@@ -8,13 +8,24 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[ORM\HasLifecycleCallbacks]
 
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    public const STATUS_ATIVO = 'ativo';
+    public const STATUS_DESATIVADO = 'desativado';
+
+    public const STATUS_OPTIONS = [
+        self::STATUS_ATIVO,
+        self::STATUS_DESATIVADO,
+    ];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -49,6 +60,10 @@ class User
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
+
+
+    #[ORM\Column(type: 'json')]
+    private array $roles = [];
 
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
@@ -142,6 +157,9 @@ class User
 
     public function setStatus(string $status): static
     {
+        if (!in_array($status, self::STATUS_OPTIONS)) {
+            throw new \InvalidArgumentException("Status inválido");
+        }
         $this->status = $status;
 
         return $this;
@@ -209,7 +227,7 @@ class User
     {
         return $this->updatedAt;
     }
-    #[ORM\PreUpdate]
+    #[ORM\PrePersist]
     public function setUpdatedAt(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
@@ -305,6 +323,7 @@ class User
         return $this;
     }
 
+   
     public function getRole(): ?Role
     {
         return $this->role;
@@ -316,4 +335,42 @@ class User
 
         return $this;
     }
+
+
+
+
+
+
+
+
+
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+
+
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
 }
