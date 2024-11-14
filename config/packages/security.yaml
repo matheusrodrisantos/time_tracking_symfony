@@ -23,9 +23,11 @@ security:
                 path: app_logout
                 # where to redirect after logout
                 target: app_user_index
-            
             json_login:
-                check_path: api_login
+                check_path: app_api_login
+                username_path: email
+                password_path: password
+
                 
 
             # activate different ways to authenticate
