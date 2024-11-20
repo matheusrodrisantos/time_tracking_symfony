@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PONTO RCC{% endblock %}
+
+{% block header %}
+    {% include 'components/head/head.html.twig' %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% include 'components/weekly-overview.html.twig' %}
+    {% include 'components/total-balance.html.twig' %}
+</div>
+{% endblock %}

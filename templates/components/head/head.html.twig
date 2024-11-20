@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/components/head.css') }}">
+{% endblock %}
+
+{% block header %}
+
+<header class="header">
+    <nav class="navbar">
+        <div class="header__left">
+                <img src="{{asset('images/rcc-brasil-horizontal.svg')}}" alt="Foto de perfil" class="logo-image">
+        </div>
+        <div class="header__right">
+            <div class="icon-container">
+                <i class="material-icons">person</i> 
+            </div>
+        </div>
+    </nav>
+</header>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+.schedule-weekly {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 1200px; /* Ajuste da largura máxima */
+    margin: 0 auto;
+}
+
+.week-container {
+    display: flex;
+    justify-content: flex-start; /* Alinha os blocos à esquerda */
+    gap: 10px; /* Espaçamento entre os blocos */
+    overflow-x: auto; /* Ativa o scroll horizontal */
+    white-space: nowrap; /* Garante que os blocos fiquem em linha única */
+    padding-bottom: 10px; /* Espaçamento para o scroll */
+}
+
+.title-weekly{
+    color: #004058;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.day-block {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 80px; /* Tamanho fixo dos blocos para facilitar o scroll */
+    flex: 0 0 auto; /* Impede que os blocos se redimensionem */
+    padding: 5px;
+    text-align: center;
+}
+
+.day-header {
+    font-weight: bold;
+    font-size: 1.0em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.schedule-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.schedule-list li {
+    margin: 1px 0;
+    font-size: 0.8em;
+}
+.total{
+    border-top: 1px solid #666;
+    margin-top: 10px;
+    color: rgb(0, 0, 0);
+}
+
+/* Estilo para telas grandes (desktop) */
+@media (min-width: 769px) {
+    .week-container {
+        flex-wrap: wrap; /* Retorna ao layout padrão */
+        overflow-x: visible; /* Remove o scroll horizontal */
+    }
+
+    .day-block {
+        min-width: calc(14% - 10px); /* Dividindo igualmente entre os dias */
+        flex: 1; /* Permite redimensionamento */
+    }
+
+    .schedule-list li {
+        margin: 1px 0;
+        font-size: 0.9em;
+    }
+}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\api\v1;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,7 +13,7 @@ use App\Entity\User;
 
 class ApiLoginController extends AbstractController
 {
-    #[Route('/api/login', name: 'app_api_login')]
+    #[Route('/api/v1/login', name: 'app_api_login')]
     public function index(#[CurrentUser] ?User $user): Response
     {
         

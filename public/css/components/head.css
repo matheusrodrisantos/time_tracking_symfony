@@ -1,0 +1,58 @@
+/* Geral */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+.header {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+    padding: 0 20px; /* Espaçamento nas laterais */
+    width: 100%; /* Garante que o container ocupe toda a largura */
+}
+
+/* Estilo da seção esquerda */
+.header__left {
+    font-size: 18px;
+    color: #333;
+}
+
+.header__left strong {
+    color: #007bff;
+}
+
+.logo-image {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+}
+
+/* Estilo da seção direita */
+.header__right {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
