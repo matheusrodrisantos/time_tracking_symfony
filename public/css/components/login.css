@@ -64,12 +64,24 @@ body {
   
   .login-container .btn-office,
   .login-container .btn-ad {
-    background-color: #4CAF50;
+    background-color: #343a40;
+    border-color: #343a40;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .login-container .btn-office img,
+  .login-container .btn-ad img {
+    margin-right: 10px;
+    width: 20px;
   }
   
   .login-container .btn-office:hover,
   .login-container .btn-ad:hover {
-    background-color: #45a049;
+    background-color: #343a40;
+    border-color: #343a40;
+    color:#ccc;
   }
   
   /* Alerta de erro */

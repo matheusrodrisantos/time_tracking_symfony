@@ -5,11 +5,9 @@
 <link rel="stylesheet" href="{{ asset('css/components/login.css') }}">
 {% endblock %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Login !{% endblock %}
 
 {% block body %}
-
-    
 
 <div class="login-container">
     {% if error %}
@@ -28,13 +26,11 @@
         <button class="btn btn-lg btn-primary" type="submit">
             Entrar
         </button>
-
         <button class="btn btn-lg btn-office" type="button">
-            Entrar com Office
-        </button>
-
-        <button class="btn btn-lg btn-ad" type="button">
-            Entrar com Active Directory
+            <img src="{{ asset('images/microsoft-icon.svg') }}"/>
+            <div>
+                Microsoft
+            </div>
         </button>
     </form>
 </div>
